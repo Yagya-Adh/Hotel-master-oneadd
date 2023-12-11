@@ -1,0 +1,83 @@
+Doc
+
+1. create laravel backend .
+2. create react frontend .
+
+#. LARAVEL
+
+a. phpmyadmin setup inside docker.compose file
+
+phpmyadmin:
+image: phpmyadmin/phpmyadmin
+ports:
+- "8080:80"
+environment:
+PMA_HOST: "mysql"
+PMA_USER: "${DB_USERNAME}"
+PMA_PASSWORD: "${DB_PASSWORD}"
+MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+PMA_DATABASE: "${DB_DATABASE}"
+networks:
+- sail
+depends_on:
+- mysql
+
+Create role table for existing users table:
+
+1. > sail artisan make:migration add_role_as_to_users_table --table=users
+public function up(): void
+2. {
+Schema::table('users', function (Blueprint $table) {
+
+$table->integer('role')->default('0');
+});
+
+}
+
+/\*\*
+
+- Reverse the migrations.
+\*/
+public function down(): void
+{
+Schema::table('users', function (Blueprint $table) {
+$table->dropColumn('role');
+});
+}
+
+3. > sail artisan migrate
+
+4. Protected routes:
+
+Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
+//add your routes here
+
+});
+
+5. Create middleware or admin:
+
+> sail artisan make:middleware AdminMiddleware
+
+6. Inside AdminMiddleWare.php:
+
+public function handle(Request $request, Closure $next): Response
+{
+//admin role == 1
+//user role == 0
+if (Auth::check()) {
+if (Auth::user()->role == '1') {
+return $next($request);
+} else {
+return redirect('/welcome')->with('message', 'Access Denied as you are not Admin');
+}
+} else {
+return redirect('/login')->with('message', 'Login to access the website info');
+}
+return $next($request);
+}
+
+7. Create protected middlware into Kernal.php:
+our custome alias middleware:
+'isAdmin' => \App\Http\Middleware\AdminMiddleware::class,
+
+// php artisan optimize
