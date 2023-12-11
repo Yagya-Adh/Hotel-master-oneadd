@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 
 const AddMenu = () => {
-  const [fooname, setFooName] = useState("");
-  const [fooprice, setFooPrice] = useState("");
-  const [fooimage, setFooImage] = useState("");
+  // const [foodie, setFoodie] = useState({ name: "", price: "", image: "" });
+  const [foodie, setFoodie] = useState([]);
 
-  const handleName = (e) => {
-    setFooName(e.target.value);
-  };
-  const handlePrice = (e) => {
-    setFooPrice(e.target.value);
-  };
-  const handleImg = (e) => {
-    setFooImage(e.target.value);
+  const onChanze = (e) => {
+    setFoodie({ ...foodie, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    alert("food : " + fooname + ', ' + "price:" + fooprice + ', '+" image: " + fooimage);
+    // alert(
+    //   "  food: " +
+    //     foodie.name +
+    //     " \n price: " +
+    //     foodie.price +
+    //     " \n image:" +
+    //     foodie.image +
+    //     " "
+    // );
   };
 
   return (
@@ -31,8 +31,8 @@ const AddMenu = () => {
             type="text"
             name="name"
             id=""
-            value={fooname}
-            onChange={handleName}
+            value={foodie.name}
+            onChange={onChanze}
           />
         </div>
 
@@ -42,14 +42,19 @@ const AddMenu = () => {
             type="number"
             name="price"
             id=""
-            value={fooprice}
-            onChange={handlePrice}
+            value={foodie.price}
+            onChange={onChanze}
           />
         </div>
 
         <div>
           <label htmlFor="">Image</label>
-          <input type="file" value={fooimage} onChange={handleImg} />
+          <input
+            type="file"
+            name="image"
+            value={foodie.image}
+            onChange={onChanze}
+          />
         </div>
 
         <div>
