@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SearchBox from "./SearchBox";
-import HotelMenu from "./HotelMenu";
+import HotelMenu from "./HotelMenu/HotelMenu";
 import AddMenu from "./Addmenu/AddMenu";
 
 const menuList = [

@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 
 const AddMenu = () => {
-  // const [foodie, setFoodie] = useState({ name: "", price: "", image: "" });
-  const [foodie, setFoodie] = useState([]);
+  const [foodie, setFoodie] = useState({
+    name: "",
+    price: "",
+    image: "",
+    catagory: "",
+  });
+
+  const [foodStore, setFoodStore] = useState([]);
 
   const onChanze = (e) => {
     setFoodie({ ...foodie, [e.target.name]: e.target.value });
@@ -10,16 +16,10 @@ const AddMenu = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // alert(
-    //   "  food: " +
-    //     foodie.name +
-    //     " \n price: " +
-    //     foodie.price +
-    //     " \n image:" +
-    //     foodie.image +
-    //     " "
-    // );
+    setFoodStore([...foodStore, foodie]);
+    setFoodie({ name: "", price: "", image: "", catagory: "" });
   };
+  console.log(foodStore);
 
   return (
     <div>
@@ -34,6 +34,34 @@ const AddMenu = () => {
             value={foodie.name}
             onChange={onChanze}
           />
+        </div>
+
+        <div>
+          <label htmlFor="">Category</label>
+          <select
+            name="catagory"
+            id=""
+            onChange={onChanze}
+            value={foodie.catagory}
+          >
+            <option className="p-3 w-full" value={" "}></option>
+
+            <option className="p-3 w-full" value={"drink"}>
+              drink
+            </option>
+            <option className="p-3 w-full" value={"meal"}>
+              meal
+            </option>
+            <option className="p-3 w-full" value={"break-fast"}>
+              break-fast
+            </option>
+            <option className="p-3 w-full" value={"snack"}>
+              snack
+            </option>
+            <option className="p-3 w-full" value={"desert"}>
+              desert
+            </option>
+          </select>
         </div>
 
         <div>

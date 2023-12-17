@@ -1,5 +1,7 @@
 import React from "react";
 import Summary from "./Summary/Summary";
+import GeneralEntries from "./GeneralEntries/GeneralEntries";
+import FormModal from "./FormModal/FormModal";
 
 const Board = () => {
   const features = [
@@ -22,32 +24,29 @@ const Board = () => {
     },
   ];
 
-  const Form = () => {
-    return (
-      <>
-        <div>
-          <h1 className="text-center p-1 font-bold">BALANCE SHEET</h1>
-          <form action="">
-            <div className="bg-white">
-              <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
+  /*   const date =new  Date();
+  console.log(date.toLocaleString());
 
 
- 
+ */
+  const today = new Date();
+  const f = new Intl.DateTimeFormat("en-us", {
+    dateStyle: "full",
+    timeStyle: "full",
+    // dayPeriod: "long"
+  });
 
-              </div>
-            </div>
-          </form>
-        </div>
-      </>
-    );
-  };
+  // console.log(f.format(today));
+
+  const Today = f.format(today);
+
   return (
-    <div className="row  p-2 border shadow-sm">
+    <div className="row h-screen p-2 border shadow-sm">
       <h1 className="text-center p-1 font-bold">ADMIN ACCOUNT </h1>
 
       <Summary />
-
-      {<Form />}
+      <FormModal />
+      <h3 className="fixed right-0 bottom-0 text-gray-600 pr-3">{Today}</h3>
     </div>
   );
 };

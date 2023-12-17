@@ -12,6 +12,10 @@ import { MdRestaurantMenu } from "react-icons/md";
 import { MdHistory } from "react-icons/md";
 import { FaGamepad } from "react-icons/fa";
 import { FaPowerOff } from "react-icons/fa6";
+import { MdFastfood } from "react-icons/md";
+
+
+
 
 export default function DefaultLayout() {
   const { user, token, setUser, setToken, notification } = useStateContext();
@@ -50,12 +54,12 @@ export default function DefaultLayout() {
           MENU <MdRestaurantMenu />
         </Link>
 
-        <Link to="/upload">
+        {/* <Link to="/upload">
           UPLOAD <FaUpload />
-        </Link>
+        </Link> */}
 
         <Link to="/order">
-          Orders <FaUpload />
+          Orders <MdFastfood />
         </Link>
         <Link to="/account">
           ACCOUNT

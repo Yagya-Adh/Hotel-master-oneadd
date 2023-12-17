@@ -107,6 +107,7 @@ body {
   background-color: #f6f6f6;
 }
 
+select,
 input {
   outline: 0;
   background: #ffffff;
