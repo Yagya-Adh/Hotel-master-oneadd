@@ -22,7 +22,8 @@
     "react-qr-code": "^2.0.11",
     "react-router-dom": "^6.14.0",
     "react-stripe-checkout": "^2.6.3",
-    "sweetalert2": "^11.10.1"
+    "sweetalert2": "^11.10.1",
+    "yagya-quiz": "^3.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
