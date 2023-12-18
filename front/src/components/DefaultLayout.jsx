@@ -14,9 +14,6 @@ import { FaGamepad } from "react-icons/fa";
 import { FaPowerOff } from "react-icons/fa6";
 import { MdFastfood } from "react-icons/md";
 
-
-
-
 export default function DefaultLayout() {
   const { user, token, setUser, setToken, notification } = useStateContext();
 
@@ -73,18 +70,20 @@ export default function DefaultLayout() {
         <Link to="/quiz">
           Quiz board
           <FaGamepad />
-
         </Link>
       </aside>
 
       <div className="content">
-        <header>
+        <header className="relative flex justify-around w-full">
           <div>Header</div>
           <div>
-            {user.name}&nbsp; &nbsp;
-            <span className="btn-logout" href="#" onClick={onLogout}>
+            {/* {user.name}&nbsp; &nbsp; */}
+            {/* btn-logout */}
+            <span
+              className="p-1 hover:text-gray-500 text-2xl"
+              onClick={onLogout}
+            >
               <FaPowerOff />
-              {/* Logout */}
             </span>
           </div>
         </header>

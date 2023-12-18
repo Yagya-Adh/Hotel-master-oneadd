@@ -15,19 +15,20 @@ const RootOrder = () => {
     setShows(!shows);
   };
 
-
-
-
   return (
     <div>
-      <div className="flex  justify-between   ">
-        <div className="">
-            <Bttn clicKS={CreateHand} BtNam={"Create Order" } />
+      <div className="relative flex justify-around w-full shadow-lg overflow-hidden ">
+        <div className="w-full overflow-hidden">
+          <Bttn clicKS={CreateHand} BtNam={"Create Order"} />
           <Bttn clicKS={showHand} BtNam={"List Order"} />
         </div>
-        <OrderPlace />
+
+        <div className="m-2 bg-rose-600 p-2 hover:bg-green-500">
+          <OrderPlace />
+        </div>
       </div>
-      <div className="p-2 my-2 border-t-2">
+
+      <div className="w-full overflow-hidden shadow-lg p-1 rounded-sm my-3">
         {create && <OrderCreate />}
         {shows && <OrderView />}
       </div>
