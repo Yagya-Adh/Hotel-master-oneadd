@@ -16,10 +16,14 @@ const History = () => {
   };
 
   return (
-    <div className="flex">
-      <div className=" border-r-4">
+    <div className="flex justify-end h-screen">
+      <div className="border w-1/2 mx-4 bg-slate-200 p-1">
+        <HistoryVisitor />
+      </div>
+
+      <div className="border w-1/3   bg-slate-200 p-1">
         <h1 className="text-xl"> Record map </h1>
-        <div>
+        <div className="flex justify-between">
           <Btn btnname={"Sales"} click={btnClick} />
           <Btn btnname={"Perchase"} click={btnClickper} />
         </div>
@@ -28,12 +32,8 @@ const History = () => {
         {!clkper && <PerChase />}
 
         <span className="text-gray-500">
-          Our sale and perchase statement summary.{" "}
+          Our sale and perchase statement summary.
         </span>
-      </div>
-
-      <div className="border-2 p-1 m-1 w-77 flex h-full justify-center">
-        <HistoryVisitor />
       </div>
     </div>
   );
